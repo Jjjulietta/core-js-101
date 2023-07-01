@@ -28,8 +28,21 @@
  *      .catch((error) => console.log(error.message)) // 'Error: Wrong parameter is passed!
  *                                                    //  Ask her again.';
  */
-function willYouMarryMe(/* isPositiveAnswer */) {
-  throw new Error('Not implemented');
+// eslint-disable-next-line consistent-return
+function willYouMarryMe(isPositiveAnswer) {
+  return new Promise((resolve, reject) => {
+    if (typeof isPositiveAnswer !== 'boolean') {
+      reject(new Error('Wrong parameter is passed! Ask her again.'));
+    }
+    if (typeof isPositiveAnswer === 'boolean' && isPositiveAnswer) {
+      resolve('Hooray!!! She said "Yes"!');
+    }
+    if (typeof isPositiveAnswer === 'boolean' && !isPositiveAnswer) {
+      resolve('Oh no, she said "No".');
+    }
+  });
+
+  // throw new Error('Not implemented');
 }
 
 
@@ -48,8 +61,10 @@ function willYouMarryMe(/* isPositiveAnswer */) {
  *    })
  *
  */
-function processAllPromises(/* array */) {
-  throw new Error('Not implemented');
+function processAllPromises(array) {
+  const promise = Promise.all(array);
+  return promise;
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -71,8 +86,10 @@ function processAllPromises(/* array */) {
  *    })
  *
  */
-function getFastestPromise(/* array */) {
-  throw new Error('Not implemented');
+function getFastestPromise(array) {
+  const promis = Promise.race(array);
+  return promis;
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -93,6 +110,10 @@ function getFastestPromise(/* array */) {
  *
  */
 function chainPromises(/* array, action */) {
+  // eslint-disable-next-line max-len
+  // return new Promise((resolve) => {
+  // eslint-disable-next-line max-len
+  // const result = array.reduce((acc, item) => item.then((res) => acc.push(res)).then(action.apply(this, acc)), []);
   throw new Error('Not implemented');
 }
 
